@@ -24,4 +24,16 @@ public class LibraryManagementSystem {
         }
         return results;
     }
+
+    public static List<Book> searchBooks(String criteria, String type) {
+        List<Book> filteredResults = new ArrayList<>();
+        List<Book> basicResults = searchBooks(criteria);
+
+        for (Book book : basicResults) {
+            if (book.getClass().getSimpleName().equalsIgnoreCase(type)) {
+                filteredResults.add(book);
+            }
+        }
+        return filteredResults;
+    }
 }
