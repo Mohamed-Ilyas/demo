@@ -3,8 +3,9 @@ public class Member extends User {
     final int MAX_BORROW_LIMIT = 5;
 
     // Step 4.4: Constructor
-    public Member(int borrowedBooksCount) {
-        this.borrowedBooksCount = borrowedBooksCount;
+    public Member(String  name, String contactInfo) {
+        super(name, contactInfo);
+        this.borrowedBooksCount = 0;
     }
 
     public void displayDashboard() {

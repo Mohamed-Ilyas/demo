@@ -2,24 +2,30 @@ abstract public class User {
     String userId;
     private String name;
     private String contactInfo;
+    static int totalUsers = 0;
+    private static int idCounter = 0;
 
     public User() {
         this.userId = this.generateUniqueId();
+        totalUsers++;
     }
 
-    public string generateUniqueId() {
-        return "0";
+    final public String generateUniqueId() {
+        return String.valueOf(++idCounter);
     }
 
     User(String name, String contactInfo) {
+        this.userId = this.generateUniqueId();
         this.name = name;
         this.contactInfo = contactInfo;
+        totalUsers++;
     }
 
     User(User obj) {
         this.userId = obj.userId;
         this.name = obj.name;
         this.contactInfo = obj.contactInfo;
+        totalUsers++;
     }
 
     public String getName() {
@@ -36,6 +42,10 @@ abstract public class User {
 
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    public static int getTotalUsers() {
+        return totalUsers;
     }
 
     abstract void displayDashboard();
